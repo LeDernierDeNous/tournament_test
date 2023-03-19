@@ -53,12 +53,22 @@ tournament.add_team(team9)
 
 # Generate matches for the tournament
 tournament.generate_first_matches()
-
-# Print the matches
+# Print first round of the tournament
 tournament.print_tournament_matches()
+# Play all the round of the tournament
+for round_number in range(get_depth(len(tournament.teams))-1) :
+    tournament.print_command_line_separator()
+    print(f'Starting round {round_number+1}')
+    tournament.random_result_round()
+    tournament.print_tournament_matches()
+    tournament.print_command_line_separator()
+    print(f'Round {round_number+1} is over, starting the next round')
+    tournament.validate_round(round_number)
+    tournament.print_tournament_matches()
 
-# Random result
+tournament.print_command_line_separator()
+print(f'Starting round {round_number+2}')
 tournament.random_result_round()
-
-# Print the matches
 tournament.print_tournament_matches()
+tournament.print_command_line_separator()
+print(f'Tournament is over, congratulation to the winning team is {tournament.get_winner().to_string()}')

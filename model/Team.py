@@ -27,3 +27,6 @@ class Team:
             self.players.remove(player)
         else:
             print(f"Error: player '{player.name}' not found in team '{self.name}'")
+            
+    def to_string(self) -> str:
+        return self.name
