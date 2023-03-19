@@ -1,4 +1,5 @@
 import random
+from colors.bcolors import bcolors
 from model.Team import Team
 
 
@@ -46,9 +47,9 @@ class Match:
 
     def print_match(self):
         if type(self.winner) == Team:
-            print(f"{self.get_team_name(1)} vs. {self.get_team_name(2)} : {self.winner.name}")
+            print(bcolors.HEADER +f"{self.get_team_name(1)} vs. {self.get_team_name(2)} :"+ bcolors.OKGREEN +f" {self.winner.name}"+bcolors.ENDC)
         else:
-            print(f"{self.get_team_name(1)} vs. {self.get_team_name(2)} : {self.winner}")
+            print(bcolors.HEADER +f"{self.get_team_name(1)} vs. {self.get_team_name(2)} :"+ bcolors.WARNING +f" {self.winner}"+bcolors.ENDC)
             
     def get_random_winner(self) -> Team:
         if random.randint(0,100) > 50 :
