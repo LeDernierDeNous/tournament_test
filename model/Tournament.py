@@ -3,7 +3,7 @@ from model.Team import Team
 
 from tournament_tools import get_depth
 
-class Tournament:
+class Tournament():
     def __init__(self):
         self.teams = []
         self.matches = []
@@ -21,29 +21,6 @@ class Tournament:
             team.set_status(status)
         else:
             print(f"Error: team '{team.name}' not found in tournament")
-
-    def generate_first_matches(self):
-        if len(self.teams) < 2 :
-            print('Error: A tournament need at least 2 teams')
-            exit()
-        depth = get_depth(len(self.teams))
-        
-        # Depth = number of rounds
-        for i in range(depth):
-            self.rounds.append([])
-        
-        range_match = int((2**depth)/2)
-        for i in range(range_match):
-            match = Match(self.teams[i],None)
-            self.matches.append(match)
-        
-        for i in range(range_match):
-            if len(self.teams) > i+range_match:
-                self.matches[i].set_team2(self.teams[i+range_match])
-            else:
-                self.matches[i].set_team2('None')
-        
-        self.rounds[self.actual_round] = self.matches
                 
     def validate_round(self,round_number: int):
         for match in self.rounds[round_number]:

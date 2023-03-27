@@ -30,6 +30,10 @@ class Match:
     def set_winner(self, team: Team):
         if team == self.team1 or team == self.team2:
             self.winner = team
+            
+    def apply_elo_change(self, winner:Team):
+        pass
+        
 
     def get_team_name(self, team_number: int):
         if team_number == 1:

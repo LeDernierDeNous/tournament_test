@@ -4,10 +4,11 @@ from model.Player import Player
 class Team:
     VALID_STATUSES = {'None', 'Validated', 'Participate', 'Eliminated'}
     
-    def __init__(self, name: str):
+    def __init__(self, name: str, elo: int=1000):
         self.name = name
         self.players = []
         self.status = 'None'
+        self.elo = elo
 
     def get_status(self):
         return self.status
@@ -30,3 +31,6 @@ class Team:
             
     def to_string(self) -> str:
         return self.name
+    
+    def change_elo(self, change:int):
+        self.elo = self.elo + change
